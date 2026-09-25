@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Offset for sticky header when jumping to #anchors */
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid #01473A;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-[12px] font-semibold uppercase tracking-[0.16em] text-muted;
+  }
+
+  /* Primary CTA - dark green, softly rounded rectangle */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] bg-brand px-6 py-3.5
+           text-sm font-semibold text-white transition-all duration-200
+           hover:bg-brand-deep hover:shadow-cardHover active:scale-[0.99]
+           min-h-[50px];
+  }
+
+  /* Secondary CTA - outline / light */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[10px] border border-brand/25
+           bg-white px-6 py-3.5 text-sm font-semibold text-brand transition-all duration-200
+           hover:border-brand hover:bg-brand-mist active:scale-[0.99] min-h-[50px];
+  }
+
+  .btn-arrow {
+    @apply transition-transform duration-200 group-hover:translate-x-0.5;
+  }
+
+  .card {
+    @apply rounded-card border border-black/[0.06] bg-white shadow-card transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-cardHover;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+}
