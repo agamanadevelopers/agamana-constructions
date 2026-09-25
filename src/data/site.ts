@@ -9,7 +9,7 @@
 export const site = {
   brand: 'Agamana Constructions',
   group: 'Agamana Group',
-  url: 'https://constructions.agamana.com',
+  url: 'https://agamanaconstructions.com',
   tagline: 'Construction  |  Civil Works  |  Turnkey Projects',
   locations: ['Bengaluru', 'Shimoga', 'Sagara'],
 
