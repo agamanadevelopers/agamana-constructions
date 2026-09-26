@@ -365,8 +365,7 @@ function SuccessView({ message, onClose }: { message: string; onClose: () => voi
       </div>
       <h3 className="text-2xl font-semibold text-brand">Thank you!</h3>
       <p className="mx-auto mt-2 max-w-sm text-muted">
-        Send the details to us on WhatsApp and we’ll get back to you with the next
-        steps, or call us directly.
+        We’ve received your request and will get back to you shortly. You can also reach us on WhatsApp or call us directly.
       </p>
       <div className="mt-6 flex flex-col gap-3">
         <a
