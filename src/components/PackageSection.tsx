@@ -26,7 +26,7 @@ export default function PackageSection() {
             </p>
           </div>
           <Link
-            href="/packages/compare"
+            href="/packages"
             className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-greenSoft hover:text-white"
           >
             Compare all specifications

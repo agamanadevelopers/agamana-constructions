@@ -118,7 +118,7 @@ export default async function PackageDetailPage({
                 </h2>
               </div>
               <Link
-                href="/packages/compare"
+                href="/packages"
                 className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand"
               >
                 Compare packages
