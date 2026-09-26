@@ -56,10 +56,11 @@ export default async function PackagesPage() {
       <section className="bg-cream py-10 sm:py-14">
         <div className="container-page">
           <PackageComparison packages={packages} />
-          <p className="mt-8 text-center text-xs text-muted">
-            Specifications are indicative and can be tailored. Final inclusions are
-            confirmed in your project estimate.
-          </p>
+          <div className="mt-10 rounded-xl border border-black/[0.07] bg-brand-mist px-5 py-4 sm:px-6">
+            <p className="text-[13px] leading-relaxed text-muted">
+              <span className="font-semibold text-ink">Disclaimer:</span> The above package prices are applicable for projects with a minimum built-up area of 3,000 sq.ft. The final project estimate may vary depending on the project requirements, site location, site conditions, specifications, scope of work, and prevailing material prices at the time of construction. Final pricing will be confirmed based on the project-specific requirements and detailed estimation.
+            </p>
+          </div>
         </div>
       </section>
     </PageShell>
