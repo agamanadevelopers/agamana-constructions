@@ -4,8 +4,25 @@ import { ArrowRight } from './icons';
 import PackageCard from './PackageCard';
 import Reveal from './Reveal';
 
-export default function PackageSection({ packages }: { packages?: ConstructionPackage[] | null }) {
+export interface PackageSectionCms {
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+  compareLinkText?: string;
+  footerNote?: string;
+}
+
+export default function PackageSection({
+  sectionData,
+  packages,
+}: {
+  sectionData?: PackageSectionCms | null;
+  packages?: ConstructionPackage[] | null;
+}) {
   const data = packages?.length ? packages : staticPackages;
+  const sectionTitle = sectionData?.sectionTitle ?? 'Choose Your Construction Package';
+  const sectionSubtitle = sectionData?.sectionSubtitle ?? 'Three specification levels, built to the same standards. Pick the finish that fits your budget.';
+  const compareLinkText = sectionData?.compareLinkText ?? 'Compare all specifications';
+  const footerNote = sectionData?.footerNote ?? 'Indicative per-sq.ft rates. Final estimate depends on design, site and specifications.';
 
   return (
     <section
@@ -19,19 +36,14 @@ export default function PackageSection({ packages }: { packages?: ConstructionPa
       <div className="container-page relative">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold sm:text-[42px]">
-              Choose Your Construction Package
-            </h2>
-            <p className="mt-3 text-white/70 sm:text-lg">
-              Three specification levels, built to the same standards. Pick the finish
-              that fits your budget.
-            </p>
+            <h2 className="text-3xl font-bold sm:text-[42px]">{sectionTitle}</h2>
+            <p className="mt-3 text-white/70 sm:text-lg">{sectionSubtitle}</p>
           </div>
           <Link
             href="/packages"
             className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-greenSoft hover:text-white"
           >
-            Compare all specifications
+            {compareLinkText}
             <ArrowRight className="btn-arrow" width={16} height={16} />
           </Link>
         </Reveal>
@@ -44,10 +56,7 @@ export default function PackageSection({ packages }: { packages?: ConstructionPa
           ))}
         </div>
 
-        <p className="mt-8 text-center text-xs text-white/50">
-          Indicative per-sq.ft rates. Final estimate depends on design, site and
-          specifications.
-        </p>
+        <p className="mt-8 text-center text-xs text-white/50">{footerNote}</p>
       </div>
     </section>
   );

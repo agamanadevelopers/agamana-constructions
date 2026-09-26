@@ -11,6 +11,11 @@ export interface WhatWeBuildCategoryCms {
   imageAlt?: string;
 }
 
+export interface WhatWeBuildSectionCms {
+  sectionTitle?: string;
+  linkText?: string;
+}
+
 const staticCategories: WhatWeBuildCategoryCms[] = [
   { title: 'Residential', items: ['Individual Homes', 'Villas', 'Farmhouses', 'Luxury Residences', 'Renovations'], image: images.buildResidential },
   { title: 'Commercial', items: ['Office Spaces', 'Retail Buildings', 'Commercial Developments'], image: images.buildCommercial },
@@ -19,21 +24,27 @@ const staticCategories: WhatWeBuildCategoryCms[] = [
   { title: 'Civil & Site Development', items: ['Roads & Pathways', 'Drainage', 'Compound Walls', 'Earthwork', 'External Development'], image: images.buildCivil },
 ];
 
-export default function WhatWeBuild({ categories }: { categories?: WhatWeBuildCategoryCms[] | null }) {
+export default function WhatWeBuild({
+  section,
+  categories,
+}: {
+  section?: WhatWeBuildSectionCms | null;
+  categories?: WhatWeBuildCategoryCms[] | null;
+}) {
   const data = categories?.length ? categories : staticCategories;
+  const sectionTitle = section?.sectionTitle ?? 'What Can We Build For You?';
+  const linkText = section?.linkText ?? 'View all services';
 
   return (
     <section id="what-we-build" className="bg-brand-mist py-14 sm:py-[70px]">
       <div className="container-page">
         <Reveal className="mb-9 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-3xl font-bold text-brand sm:text-[40px]">
-            What Can We Build For You?
-          </h2>
+          <h2 className="text-3xl font-bold text-brand sm:text-[40px]">{sectionTitle}</h2>
           <Link
             href="/#packages"
             className="group hidden items-center gap-1.5 text-sm font-semibold text-brand sm:inline-flex"
           >
-            View all services
+            {linkText}
             <ArrowRight className="btn-arrow" width={16} height={16} />
           </Link>
         </Reveal>
@@ -52,14 +63,10 @@ export default function WhatWeBuild({ categories }: { categories?: WhatWeBuildCa
                   />
                 </div>
                 <div className="flex flex-1 flex-col lg:px-2.5 lg:pb-2.5 lg:pt-4">
-                  <h3 className="text-base font-semibold text-brand lg:text-[17px]">
-                    {c.title}
-                  </h3>
+                  <h3 className="text-base font-semibold text-brand lg:text-[17px]">{c.title}</h3>
                   <ul className="mt-3 hidden space-y-1.5 lg:block">
                     {c.items.map((item) => (
-                      <li key={item} className="text-sm text-muted">
-                        {item}
-                      </li>
+                      <li key={item} className="text-sm text-muted">{item}</li>
                     ))}
                   </ul>
                 </div>

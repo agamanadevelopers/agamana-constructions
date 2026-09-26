@@ -141,3 +141,9 @@ export const IconDocumentation = (props: IconProps) => (
     <path d="M8 17h6" />
   </svg>
 );
+
+export const ChevronDown = (props: IconProps) => (
+  <svg {...base(props)}>
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+);

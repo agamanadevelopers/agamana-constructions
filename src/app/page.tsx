@@ -17,27 +17,61 @@ import { packages as staticPackages } from '@/data/packages';
 import { sanityFetch } from '@/sanity/lib/client';
 import {
   heroQuery,
-  packagesQuery,
-  teamQuery,
-  faqsQuery,
-  whatWeBuildQuery,
-  processStepsQuery,
+  projectTypeSelectorQuery,
+  groupEcosystemSectionQuery,
   groupEcosystemQuery,
+  whatWeBuildSectionQuery,
+  whatWeBuildQuery,
+  packageSectionQuery,
+  packagesQuery,
+  processTimelineSectionQuery,
+  processStepsQuery,
+  projectVisibilityQuery,
+  teamSectionQuery,
+  teamQuery,
+  faqSectionQuery,
+  faqsQuery,
+  finalCtaQuery,
 } from '@/sanity/lib/queries';
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [heroCms, packagesCms, teamCms, faqsCms, whatWeBuildCms, processCms, ecosystemCms] =
-    await Promise.all([
-      sanityFetch(heroQuery),
-      sanityFetch(packagesQuery),
-      sanityFetch(teamQuery),
-      sanityFetch(faqsQuery),
-      sanityFetch(whatWeBuildQuery),
-      sanityFetch(processStepsQuery),
-      sanityFetch(groupEcosystemQuery),
-    ]);
+  const [
+    heroCms,
+    projectTypeSelectorCms,
+    ecosystemSectionCms,
+    ecosystemCms,
+    whatWeBuildSectionCms,
+    whatWeBuildCms,
+    packageSectionCms,
+    packagesCms,
+    processTimelineSectionCms,
+    processCms,
+    projectVisibilityCms,
+    teamSectionCms,
+    teamCms,
+    faqSectionCms,
+    faqsCms,
+    finalCtaCms,
+  ] = await Promise.all([
+    sanityFetch(heroQuery),
+    sanityFetch(projectTypeSelectorQuery),
+    sanityFetch(groupEcosystemSectionQuery),
+    sanityFetch(groupEcosystemQuery),
+    sanityFetch(whatWeBuildSectionQuery),
+    sanityFetch(whatWeBuildQuery),
+    sanityFetch(packageSectionQuery),
+    sanityFetch(packagesQuery),
+    sanityFetch(processTimelineSectionQuery),
+    sanityFetch(processStepsQuery),
+    sanityFetch(projectVisibilityQuery),
+    sanityFetch(teamSectionQuery),
+    sanityFetch(teamQuery),
+    sanityFetch(faqSectionQuery),
+    sanityFetch(faqsQuery),
+    sanityFetch(finalCtaQuery),
+  ]);
 
   const packages = (packagesCms as typeof staticPackages | null)?.length
     ? (packagesCms as typeof staticPackages)
@@ -86,15 +120,33 @@ export default async function HomePage() {
       <Header />
       <main className="pb-[76px] lg:pb-0">
         <Hero data={heroCms as Parameters<typeof Hero>[0]['data']} />
-        <ProjectTypeSelector />
-        <GroupEcosystem ecosystem={ecosystemCms as Parameters<typeof GroupEcosystem>[0]['ecosystem']} />
-        <WhatWeBuild categories={whatWeBuildCms as Parameters<typeof WhatWeBuild>[0]['categories']} />
-        <PackageSection packages={packages} />
-        <ProcessTimeline steps={processCms as Parameters<typeof ProcessTimeline>[0]['steps']} />
-        <ProjectVisibility />
-        <Team members={teamCms as Parameters<typeof Team>[0]['members']} />
-        <Faq faqs={faqsCms as Parameters<typeof Faq>[0]['faqs']} />
-        <FinalCta />
+        <ProjectTypeSelector data={projectTypeSelectorCms as Parameters<typeof ProjectTypeSelector>[0]['data']} />
+        <GroupEcosystem
+          section={ecosystemSectionCms as Parameters<typeof GroupEcosystem>[0]['section']}
+          ecosystem={ecosystemCms as Parameters<typeof GroupEcosystem>[0]['ecosystem']}
+        />
+        <WhatWeBuild
+          section={whatWeBuildSectionCms as Parameters<typeof WhatWeBuild>[0]['section']}
+          categories={whatWeBuildCms as Parameters<typeof WhatWeBuild>[0]['categories']}
+        />
+        <PackageSection
+          sectionData={packageSectionCms as Parameters<typeof PackageSection>[0]['sectionData']}
+          packages={packages}
+        />
+        <ProcessTimeline
+          section={processTimelineSectionCms as Parameters<typeof ProcessTimeline>[0]['section']}
+          steps={processCms as Parameters<typeof ProcessTimeline>[0]['steps']}
+        />
+        <ProjectVisibility data={projectVisibilityCms as Parameters<typeof ProjectVisibility>[0]['data']} />
+        <Team
+          section={teamSectionCms as Parameters<typeof Team>[0]['section']}
+          members={teamCms as Parameters<typeof Team>[0]['members']}
+        />
+        <Faq
+          section={faqSectionCms as Parameters<typeof Faq>[0]['section']}
+          faqs={faqsCms as Parameters<typeof Faq>[0]['faqs']}
+        />
+        <FinalCta data={finalCtaCms as Parameters<typeof FinalCta>[0]['data']} />
       </main>
       <Footer />
       <MobileBottomBar />

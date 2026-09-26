@@ -14,6 +14,9 @@ export interface HeroCms {
   ctaPrimary?: string;
   ctaSecondary?: string;
   heroImage?: string;
+  heroImageAlt?: string;
+  badgeLabel?: string;
+  badgeText?: string;
 }
 
 const STATIC_TRUST_POINTS = ['Clear Pricing', 'Quality Execution', 'One Point of Contact'];
@@ -21,12 +24,15 @@ const STATIC_TRUST_POINTS = ['Clear Pricing', 'Quality Execution', 'One Point of
 export default function Hero({ data }: { data?: HeroCms | null }) {
   const trustPoints = data?.trustPoints?.length ? data.trustPoints : STATIC_TRUST_POINTS;
   const heroImage = data?.heroImage ?? images.hero;
+  const heroImageAlt = data?.heroImageAlt ?? 'Contemporary residential architecture built by Agamana Constructions';
   const eyebrow = data?.eyebrow ?? site.tagline;
   const line1 = data?.headlineLine1 ?? "Let's Build";
   const line2 = data?.headlineLine2 ?? 'Your Space.';
   const body = data?.body ?? "From homes and farmhouses to commercial and hospitality spaces, we take care of the construction from start to finish.";
   const ctaPrimary = data?.ctaPrimary ?? 'Get a Construction Estimate';
   const ctaSecondary = data?.ctaSecondary ?? 'View Packages';
+  const badgeLabel = data?.badgeLabel ?? 'Agamana Constructions';
+  const badgeText = data?.badgeText ?? 'From foundation to a brighter tomorrow.';
 
   return (
     <section id="home" className="relative overflow-hidden bg-cream pt-6 sm:pt-10">
@@ -70,7 +76,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
             <div className="relative aspect-[16/11] w-full overflow-hidden rounded-2xl sm:aspect-[16/9] lg:aspect-[5/5.2]">
               <Image
                 src={heroImage}
-                alt="Contemporary residential architecture built by Agamana Constructions"
+                alt={heroImageAlt}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 560px"
@@ -78,10 +84,10 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               />
               <div className="absolute bottom-0 right-0 max-w-[200px] rounded-tl-2xl bg-brand/95 p-5 backdrop-blur-sm">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-greenSoft">
-                  Agamana Constructions
+                  {badgeLabel}
                 </p>
                 <p className="mt-1.5 font-heading text-[17px] font-semibold leading-snug text-white">
-                  From foundation to a brighter tomorrow.
+                  {badgeText}
                 </p>
               </div>
             </div>
