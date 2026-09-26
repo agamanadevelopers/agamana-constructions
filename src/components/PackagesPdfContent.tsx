@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import { type ConstructionPackage } from '@/data/packages';
 
 const G = '#2d6a4f';   // brand green
@@ -21,7 +20,6 @@ const s = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
   },
   logoWrap: { flexDirection: 'row', alignItems: 'center' },
-  logoImg: { width: 40, height: 40, marginRight: 12 },
   brandCol: {},
   brandName: { color: WHITE, fontSize: 16, fontFamily: 'Helvetica-Bold', letterSpacing: 0.3 },
   brandTagline: { color: '#86a898', fontSize: 7.5, marginTop: 3, letterSpacing: 1.5 },
@@ -120,7 +118,7 @@ const CATEGORY_KEYS = [
   'flooring', 'painting', 'electrical', 'plumbing', 'miscellaneous',
 ];
 
-function PackagesDocument({ packages, logoUrl }: { packages: ConstructionPackage[]; logoUrl: string | null }) {
+function PackagesDocument({ packages }: { packages: ConstructionPackage[] }) {
   return (
     <Document title="Agamana Constructions – Construction Packages" author="Agamana Constructions">
       <Page size="A4" style={s.page}>
@@ -128,7 +126,6 @@ function PackagesDocument({ packages, logoUrl }: { packages: ConstructionPackage
         {/* ── Header ── */}
         <View style={s.header}>
           <View style={s.logoWrap}>
-            {logoUrl && <Image src={logoUrl} style={s.logoImg} />}
             <View style={s.brandCol}>
               <Text style={s.brandName}>Agamana Constructions</Text>
               <Text style={s.brandTagline}>CONSTRUCTION  ·  CIVIL WORKS  ·  TURNKEY</Text>
@@ -258,23 +255,9 @@ function PackagesDocument({ packages, logoUrl }: { packages: ConstructionPackage
 }
 
 export default function PackagesPdfContent({ packages }: { packages: ConstructionPackage[] }) {
-  const [logoUrl, setLogoUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Convert logo to base64 so @react-pdf/renderer can embed it
-    fetch('/logo-light.webp')
-      .then((r) => r.blob())
-      .then((blob) => {
-        const reader = new FileReader();
-        reader.onloadend = () => setLogoUrl(reader.result as string);
-        reader.readAsDataURL(blob);
-      })
-      .catch(() => setLogoUrl(null));
-  }, []);
-
   return (
     <PDFDownloadLink
-      document={<PackagesDocument packages={packages} logoUrl={logoUrl} />}
+      document={<PackagesDocument packages={packages} />}
       fileName="Agamana-Constructions-Packages.pdf"
       className="inline-flex items-center gap-2 rounded-lg border border-brand bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand/90 active:scale-[0.98]"
     >
