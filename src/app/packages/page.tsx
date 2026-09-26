@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   description:
     'Compare Basic, Classic and Luxury construction packages from Agamana Constructions side by side, with specifications across design, structure, kitchen, bathrooms, flooring, electrical, plumbing and more.',
   alternates: { canonical: '/packages' },
+  openGraph: {
+    title: 'Construction Packages · Agamana Constructions',
+    description:
+      'Compare Basic, Classic and Luxury construction packages side by side. Starting from ₹1,879/sq.ft.',
+    images: [{ url: '/og-packages.webp', width: 1733, height: 907, alt: 'Agamana Constructions Packages' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Construction Packages · Agamana Constructions',
+    description: 'Compare Basic, Classic and Luxury construction packages. Starting from ₹1,879/sq.ft.',
+    images: ['/og-packages.webp'],
+  },
 };
 
 export default function PackagesPage() {

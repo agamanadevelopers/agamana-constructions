@@ -28,11 +28,13 @@ export async function generateMetadata({
       title: `${pkg.name} Construction Package · ${pkg.priceLabel}/sq.ft`,
       description: `${pkg.name} construction package by Agamana Constructions at ${pkg.priceLabel}/sq.ft. ${pkg.tagline}`,
       url: `/packages/${pkg.slug}`,
+      images: [{ url: '/og-packages.webp', width: 1733, height: 907, alt: 'Agamana Constructions Packages' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${pkg.name} Construction Package · ${pkg.priceLabel}/sq.ft`,
       description: `${pkg.name} construction package by Agamana Constructions. ${pkg.tagline}`,
+      images: ['/og-packages.webp'],
     },
   };
 }

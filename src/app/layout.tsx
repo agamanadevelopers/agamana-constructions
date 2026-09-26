@@ -52,12 +52,14 @@ export const metadata: Metadata = {
     title: "Agamana Constructions | Let's Build Your Space.",
     description:
       'Construction for homes, villas, farmhouses, commercial and hospitality spaces across Bengaluru, Shimoga and Sagara.',
+    images: [{ url: '/og-home.webp', width: 1734, height: 907, alt: 'Agamana Constructions' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: "Agamana Constructions | Let's Build Your Space.",
     description:
       'Construction for homes, villas, farmhouses, commercial and hospitality spaces across Bengaluru, Shimoga and Sagara.',
+    images: ['/og-home.webp'],
   },
   robots: { index: true, follow: true },
 };
