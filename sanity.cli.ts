@@ -6,4 +6,7 @@ export default defineCliConfig({
     dataset: 'production',
   },
   studioHost: 'agamana-constructions',
+  deployment: {
+    appId: 'gnm6avywqwxrk0528h8i385z',
+  },
 });
