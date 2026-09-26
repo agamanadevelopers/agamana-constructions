@@ -49,7 +49,13 @@ export const metadata: Metadata = {
     type: 'website',
     url: site.url,
     siteName: site.brand,
-    title: 'Agamana Constructions | Let’s Build Your Space.',
+    title: "Agamana Constructions | Let's Build Your Space.",
+    description:
+      'Construction for homes, villas, farmhouses, commercial and hospitality spaces across Bengaluru, Shimoga and Sagara.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Agamana Constructions | Let's Build Your Space.",
     description:
       'Construction for homes, villas, farmhouses, commercial and hospitality spaces across Bengaluru, Shimoga and Sagara.',
   },

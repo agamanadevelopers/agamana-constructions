@@ -24,6 +24,16 @@ export async function generateMetadata({
     title: `${pkg.name} Package · ${pkg.priceLabel}/sq.ft`,
     description: `${pkg.name} construction package by Agamana Constructions at ${pkg.priceLabel}/sq.ft. ${pkg.tagline}`,
     alternates: { canonical: `/packages/${pkg.slug}` },
+    openGraph: {
+      title: `${pkg.name} Construction Package · ${pkg.priceLabel}/sq.ft`,
+      description: `${pkg.name} construction package by Agamana Constructions at ${pkg.priceLabel}/sq.ft. ${pkg.tagline}`,
+      url: `/packages/${pkg.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${pkg.name} Construction Package · ${pkg.priceLabel}/sq.ft`,
+      description: `${pkg.name} construction package by Agamana Constructions. ${pkg.tagline}`,
+    },
   };
 }
 

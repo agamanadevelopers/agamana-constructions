@@ -90,6 +90,7 @@ export default function PackageComparison() {
               <button
                 key={p.slug}
                 onClick={() => setActive(p.slug)}
+                aria-pressed={active === p.slug}
                 className={`min-h-[44px] rounded-full text-sm font-semibold transition-colors ${
                   active === p.slug ? 'bg-brand text-white' : 'text-brand'
                 }`}
