@@ -6,7 +6,7 @@ import Wordmark from './Wordmark';
 export default function Footer() {
   return (
     <footer className="border-t border-black/[0.07] bg-cream">
-      <div className="container-page py-10">
+      <div className="container-page pb-24 pt-10 md:pb-10">
         {/* Main row */}
         <div className="flex flex-col items-start gap-6 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">
