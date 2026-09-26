@@ -42,6 +42,6 @@ export const faqs: FaqItem[] = [
   {
     question: 'What areas do you serve?',
     answer:
-      'We primarily serve Bengaluru, Sagara and Shivamogga. If your site is elsewhere in the region, get in touch and we will let you know how we can help.',
+      'We primarily serve Bengaluru, Sagara and Shimoga. If your site is elsewhere in the region, get in touch and we will let you know how we can help.',
   },
 ];

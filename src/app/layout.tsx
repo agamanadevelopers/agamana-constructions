@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     'construction company Bangalore',
     'home builders Bangalore',
     'house construction Sagara',
-    'house construction Shivamogga',
+    'house construction Shimoga',
     'turnkey construction Bangalore',
     'villa construction Bangalore',
     'farmhouse construction Karnataka',

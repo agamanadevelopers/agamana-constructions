@@ -98,7 +98,7 @@ async function seedSiteConfig() {
       'construction company Bangalore',
       'home builders Bangalore',
       'house construction Sagara',
-      'house construction Shivamogga',
+      'house construction Shimoga',
       'turnkey construction Bangalore',
       'villa construction Bangalore',
       'farmhouse construction Karnataka',
@@ -142,7 +142,7 @@ async function seedProjectTypeSelector() {
     _type: 'projectTypeSelector',
     _id: 'projectTypeSelector',
     sectionTitle: 'What are you looking to build?',
-    sectionSubtitle: 'Every project has a different purpose. Tell us what you are looking to build and we'll help you with the right approach.',
+    sectionSubtitle: "Every project has a different purpose. Tell us what you are looking to build and we'll help you with the right approach.",
     ctaText: 'Tell us about your project',
     types: [
       { _type: 'projectType', _key: 'home', title: 'My Home', desc: 'Individual homes built around the way you live.', ...(images.typeHome ? { image: images.typeHome } : { imageUrl: u('photo-1600607687939-ce8a6c25118c') }), estimateType: 'Home' },
@@ -430,7 +430,7 @@ async function seedFaqs() {
     { _id: 'faq-05', question: 'How do I track project progress?', answer: 'We keep you informed at every stage with regular updates on milestones, quality checks and materials, through a defined channel of communication.', order: 5 },
     { _id: 'faq-06', question: 'Do you undertake renovation projects?', answer: 'Yes. Alongside new construction we take up renovations and upgrades. Share your requirements and we will advise on the right approach.', order: 6 },
     { _id: 'faq-07', question: 'Do you handle interiors?', answer: 'Interiors are handled through Agamana Interior World, part of the Agamana Group, so design and execution can be coordinated end-to-end.', order: 7 },
-    { _id: 'faq-08', question: 'What areas do you serve?', answer: 'We primarily serve Bengaluru, Sagara and Shivamogga. If your site is elsewhere in the region, get in touch and we will let you know how we can help.', order: 8 },
+    { _id: 'faq-08', question: 'What areas do you serve?', answer: 'We primarily serve Bengaluru, Sagara and Shimoga. If your site is elsewhere in the region, get in touch and we will let you know how we can help.', order: 8 },
   ];
   for (const faq of faqs) {
     await createOrReplace({ _type: 'faqItem', ...faq });
