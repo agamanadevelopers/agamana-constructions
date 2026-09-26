@@ -97,6 +97,7 @@ export const siteConfig = defineType({
       name: 'ogImage',
       title: 'OG / Social Share Image',
       type: 'image',
+      description: 'Required: exactly 1200 × 630 px. This image appears when the site is shared on WhatsApp, Facebook, Twitter, etc.',
       options: { hotspot: true },
       group: 'seo',
     }),

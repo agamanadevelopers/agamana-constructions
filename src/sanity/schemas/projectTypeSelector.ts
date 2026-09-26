@@ -22,6 +22,7 @@ export const projectTypeSelector = defineType({
             name: 'image',
             title: 'Image',
             type: 'image',
+            description: 'Recommended: 500 × 375 px (4:3 ratio). Small card image for this project type.',
             options: { hotspot: true },
           }),
           defineField({ name: 'imageUrl', title: 'Image URL (external fallback)', type: 'url' }),

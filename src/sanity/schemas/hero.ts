@@ -21,6 +21,7 @@ export const hero = defineType({
       name: 'heroImage',
       title: 'Hero Image',
       type: 'image',
+      description: 'Recommended: 1120 × 1170 px (5:5.2 ratio on desktop, 16:9 on tablet). Min width 1120px. Use a high-quality construction/building photo.',
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
     }),

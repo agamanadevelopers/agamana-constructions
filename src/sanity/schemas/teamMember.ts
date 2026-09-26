@@ -12,6 +12,7 @@ export const teamMember = defineType({
       name: 'photo',
       title: 'Photo',
       type: 'image',
+      description: 'Recommended: 760 × 570 px (4:3 ratio). Professional headshot or portrait. Focus on face — use hotspot to set the crop anchor.',
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
     }),

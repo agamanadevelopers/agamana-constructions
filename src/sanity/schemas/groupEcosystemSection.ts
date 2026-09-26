@@ -14,6 +14,7 @@ export const groupEcosystemSection = defineType({
       name: 'featureImage',
       title: 'Feature Image (right side)',
       type: 'image',
+      description: 'Recommended: 1120 × 896 px (5:4 ratio). Shows on the right half of the section. Use a wide construction or group photo.',
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
     }),

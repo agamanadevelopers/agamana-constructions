@@ -47,6 +47,7 @@ export const packageSchema = defineType({
               type: 'string',
               options: { list: categoryKeys },
             }),
+            defineField({ name: 'label', title: 'Label', type: 'string' }),
             defineField({ name: 'items', title: 'Items', type: 'array', of: [{ type: 'string' }] }),
           ],
           preview: {

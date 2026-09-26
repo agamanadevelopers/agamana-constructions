@@ -11,6 +11,7 @@ export const groupEcosystemItem = defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
+      description: 'Recommended: 600 × 375 px (16:10 ratio). Small card image for each group company.',
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
     }),

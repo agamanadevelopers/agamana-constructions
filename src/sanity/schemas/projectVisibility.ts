@@ -20,6 +20,7 @@ export const projectVisibility = defineType({
       name: 'sideImage',
       title: 'Side Image',
       type: 'image',
+      description: 'Recommended: 1040 × 1196 px (4:4.6 ratio, tall portrait). Shows on the right side on desktop. Use a site engineer / construction photo.',
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
     }),
