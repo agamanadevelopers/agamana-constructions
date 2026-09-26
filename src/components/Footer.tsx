@@ -68,7 +68,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="text-xs text-muted">
-            © {new Date().getFullYear()} {site.brand} · agamanaconstructions.com
+            © {new Date().getFullYear()} {site.brand} · Owned by Agamana Group
           </p>
         </div>
       </div>
