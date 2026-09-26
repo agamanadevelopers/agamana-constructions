@@ -56,7 +56,24 @@ export default async function PackagesPage() {
       <section className="bg-cream py-10 sm:py-14">
         <div className="container-page">
           <PackageComparison packages={packages} />
-          <div className="mt-10 rounded-xl border border-black/[0.07] bg-brand-mist px-5 py-4 sm:px-6">
+
+          {/* Download PDF button */}
+          <div className="mt-8 flex justify-center">
+            <a
+              href="/api/packages-pdf"
+              download="Agamana-Constructions-Packages.pdf"
+              className="inline-flex items-center gap-2 rounded-lg border border-brand bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand/90 active:scale-[0.98]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download Packages PDF
+            </a>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-black/[0.07] bg-brand-mist px-5 py-4 sm:px-6">
             <p className="text-[13px] leading-relaxed text-muted">
               <span className="font-semibold text-ink">Disclaimer:</span> The above package prices are applicable for projects with a minimum built-up area of 3,000 sq.ft. The final project estimate may vary depending on the project requirements, site location, site conditions, specifications, scope of work, and prevailing material prices at the time of construction. Final pricing will be confirmed based on the project-specific requirements and detailed estimation.
             </p>
