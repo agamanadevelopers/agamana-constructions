@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import PackageComparison from '@/components/PackageComparison';
+import PackagesPdfDownload from '@/components/PackagesPdfDownload';
 import { sanityFetch } from '@/sanity/lib/client';
 import { packagesQuery } from '@/sanity/lib/queries';
 import { packages as staticPackages, type ConstructionPackage } from '@/data/packages';
@@ -59,18 +60,7 @@ export default async function PackagesPage() {
 
           {/* Download PDF button */}
           <div className="mt-8 flex justify-center">
-            <a
-              href="/api/packages-pdf"
-              download="Agamana-Constructions-Packages.pdf"
-              className="inline-flex items-center gap-2 rounded-lg border border-brand bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand/90 active:scale-[0.98]"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Download Packages PDF
-            </a>
+            <PackagesPdfDownload packages={packages} />
           </div>
 
           <div className="mt-6 rounded-xl border border-black/[0.07] bg-brand-mist px-5 py-4 sm:px-6">
