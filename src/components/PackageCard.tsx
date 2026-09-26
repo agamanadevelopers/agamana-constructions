@@ -6,8 +6,17 @@ export default function PackageCard({ pkg }: { pkg: ConstructionPackage }) {
   return (
     <Link
       href={`/packages/${pkg.slug}`}
-      className="group flex h-full flex-col rounded-2xl bg-[#F8F7F2] p-6 transition-shadow hover:shadow-cardHover sm:p-7"
+      className={`group relative flex h-full flex-col rounded-2xl p-6 transition-shadow hover:shadow-cardHover sm:p-7 ${
+        pkg.featured
+          ? 'bg-white ring-2 ring-[#51BA7C]'
+          : 'bg-[#F8F7F2]'
+      }`}
     >
+      {pkg.featured && (
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#51BA7C] px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-sm">
+          Most Popular
+        </span>
+      )}
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
         {pkg.name}
       </p>

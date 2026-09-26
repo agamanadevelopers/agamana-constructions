@@ -34,7 +34,7 @@ export default function PackageSection() {
           </Link>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:mt-14">
+        <div className="mt-10 grid grid-cols-1 gap-5 pt-3 md:grid-cols-3 lg:mt-14">
           {packages.map((pkg, i) => (
             <Reveal as="div" key={pkg.slug} delay={i * 80} className="flex">
               <PackageCard pkg={pkg} />
