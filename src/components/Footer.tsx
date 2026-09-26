@@ -71,6 +71,23 @@ export default function Footer() {
             © {new Date().getFullYear()} {site.brand} · Owned by Agamana Group
           </p>
         </div>
+
+        {/* Credit badge */}
+        <div className="mt-7 flex justify-center">
+          <a
+            href="https://navodita.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-brand px-5 py-2.5 text-[11px] font-medium tracking-[0.15em] text-white/50 transition-opacity hover:opacity-80"
+          >
+            CRAFTED WITH
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#e05a5a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+            </svg>
+            BY
+            <span className="font-bold tracking-normal text-white">Navodita</span>
+          </a>
+        </div>
       </div>
     </footer>
   );
