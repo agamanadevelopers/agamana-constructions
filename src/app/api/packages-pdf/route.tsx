@@ -1,6 +1,5 @@
 export const runtime = 'nodejs';
 
-import { NextResponse } from 'next/server';
 import { renderToBuffer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import { packages } from '@/data/packages';
 import path from 'path';
@@ -173,10 +172,11 @@ export async function GET() {
     </Document>
   );
 
-  return new NextResponse(buffer as unknown as BodyInit, {
+  return new Response(new Uint8Array(buffer), {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="Agamana-Constructions-Packages.pdf"',
+      'Content-Length': String(buffer.length),
     },
   });
 }
