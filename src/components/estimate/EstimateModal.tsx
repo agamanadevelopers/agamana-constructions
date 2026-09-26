@@ -249,7 +249,7 @@ export default function EstimateModal() {
             <button
               onClick={back}
               disabled={step === 1}
-              className="text-sm font-semibold text-muted disabled:opacity-0"
+              className="flex min-h-[44px] items-center px-2 text-sm font-semibold text-muted disabled:opacity-0"
             >
               ← Back
             </button>
@@ -257,7 +257,7 @@ export default function EstimateModal() {
               <button
                 onClick={next}
                 disabled={!canProceed}
-                className="text-sm font-semibold text-brand disabled:opacity-30"
+                className="flex min-h-[44px] items-center px-2 text-sm font-semibold text-brand disabled:opacity-30"
               >
                 Skip →
               </button>

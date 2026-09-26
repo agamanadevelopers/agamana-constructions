@@ -11,6 +11,8 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Account for mobile sticky bottom bar so keyboard focus isn't obscured */
+    scroll-padding-bottom: 80px;
   }
 
   /* Offset for sticky header when jumping to #anchors */
@@ -21,6 +23,7 @@
   body {
     @apply bg-cream text-ink font-sans antialiased;
     overflow-x: hidden;
+    overscroll-behavior-y: contain;
   }
 
   h1, h2, h3, h4 {

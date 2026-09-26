@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { faqs } from '@/data/faq';
-import { Plus, Minus, ArrowRight } from './icons';
+import { Plus, Minus } from './icons';
 import Reveal from './Reveal';
 
 export default function Faq() {
@@ -18,17 +17,10 @@ export default function Faq() {
   return (
     <section id="faq" className="bg-cream py-14 sm:py-[70px]">
       <div className="container-page">
-        <Reveal className="mb-9 flex flex-wrap items-end justify-between gap-4">
+        <Reveal className="mb-9">
           <h2 className="text-3xl font-bold text-brand sm:text-[42px]">
             Frequently Asked Questions
           </h2>
-          <Link
-            href="/#faq"
-            className="group hidden items-center gap-1.5 text-sm font-semibold text-brand sm:inline-flex"
-          >
-            View all FAQs
-            <ArrowRight className="btn-arrow" width={16} height={16} />
-          </Link>
         </Reveal>
 
         <div className="grid gap-4 lg:grid-cols-2 lg:gap-x-6">
@@ -46,16 +38,21 @@ export default function Faq() {
                     <button
                       onClick={() => setOpen(isOpen ? null : idx)}
                       aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${idx}`}
+                      id={`faq-btn-${idx}`}
                       className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                     >
                       <span className="text-[15px] font-semibold text-ink">
                         {f.question}
                       </span>
-                      <span className="shrink-0 text-brand">
+                      <span className="shrink-0 text-brand" aria-hidden="true">
                         {isOpen ? <Minus width={20} height={20} /> : <Plus width={20} height={20} />}
                       </span>
                     </button>
                     <div
+                      id={`faq-panel-${idx}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${idx}`}
                       className="grid transition-all duration-300 ease-out"
                       style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                     >
