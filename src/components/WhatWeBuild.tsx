@@ -34,7 +34,7 @@ const categories = [
 
 export default function WhatWeBuild() {
   return (
-    <section id="services" className="bg-brand-mist py-14 sm:py-[70px]">
+    <section id="what-we-build" className="bg-brand-mist py-14 sm:py-[70px]">
       <div className="container-page">
         <Reveal className="mb-9 flex flex-wrap items-end justify-between gap-4">
           <h2 className="text-3xl font-bold text-brand sm:text-[40px]">

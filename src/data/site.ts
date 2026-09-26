@@ -42,8 +42,10 @@ export const whatsappMessages = {
 
 export const navLinks = [
   { label: 'Home', href: '/#home' },
-  { label: 'Packages', href: '/#packages' },
-  { label: 'How We Build', href: '/#process' },
-  { label: 'Projects', href: '/#projects' },
+  { label: 'What We Build', href: '/#what-we-build' },
   { label: 'About', href: '/#about' },
+  { label: 'Packages', href: '/#packages' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Team', href: '/#team' },
+  { label: 'FAQ', href: '/#faq' },
 ] as const;

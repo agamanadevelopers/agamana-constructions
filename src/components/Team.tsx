@@ -4,7 +4,7 @@ import Reveal from './Reveal';
 
 export default function Team() {
   return (
-    <section className="bg-cream py-14 sm:py-[70px]">
+    <section id="team" className="bg-cream py-14 sm:py-[70px]">
       <div className="container-page">
         <Reveal className="mb-9 max-w-2xl">
           <h2 className="text-3xl font-bold text-brand sm:text-[42px]">
