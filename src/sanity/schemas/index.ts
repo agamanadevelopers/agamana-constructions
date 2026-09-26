@@ -16,6 +16,7 @@ import { groupEcosystemSection } from './groupEcosystemSection';
 import { projectTypeSelector } from './projectTypeSelector';
 import { projectVisibility } from './projectVisibility';
 import { finalCta } from './finalCta';
+import { enquiry } from './enquiry';
 
 export const schemaTypes = [
   // Singletons / Config
@@ -30,6 +31,8 @@ export const schemaTypes = [
   whatWeBuildSection,
   processTimelineSection,
   groupEcosystemSection,
+  // Enquiries (form submissions)
+  enquiry,
   // Lists
   packageSchema,
   teamMember,
