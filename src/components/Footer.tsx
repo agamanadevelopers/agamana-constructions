@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap items-center gap-x-7 gap-y-2 md:justify-center" aria-label="Footer">
+          <nav className="grid grid-cols-2 gap-x-8 gap-y-3 md:flex md:flex-wrap md:items-center md:gap-x-6 md:gap-y-2 md:justify-center" aria-label="Footer">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
@@ -34,7 +34,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <p className="text-sm font-medium text-muted">{site.locations.join(' • ')}</p>
+          <p className="text-sm font-medium text-muted md:text-right">{site.locations.join(' • ')}</p>
         </div>
 
         {/* Divider */}
