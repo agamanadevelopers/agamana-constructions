@@ -17,7 +17,7 @@ export const team: TeamMember[] = [
     emphasis: true,
   },
   {
-    name: 'Sudarshan',
+    name: 'Sudarshan Bhat Talagini',
     role: 'Co-Founder · Project Development',
     bio: 'Sudarshan brings an entrepreneurial and project-development perspective to Agamana, with a focus on identifying opportunities, developing projects and building long-term value through real estate and land development.',
     image: images.teamSudarshan,
