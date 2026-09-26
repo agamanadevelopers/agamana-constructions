@@ -53,7 +53,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               <EstimateButton className="w-full sm:w-auto">
                 {ctaPrimary}
               </EstimateButton>
-              <Link href="/#packages" className="btn-secondary w-full sm:w-auto">
+              <Link href="/packages" className="btn-secondary w-full sm:w-auto">
                 {ctaSecondary}
               </Link>
             </div>
