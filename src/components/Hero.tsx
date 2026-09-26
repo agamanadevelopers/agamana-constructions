@@ -5,36 +5,53 @@ import { site } from '@/data/site';
 import { CircleCheck } from './icons';
 import EstimateButton from './estimate/EstimateButton';
 
-const trustPoints = ['Clear Pricing', 'Quality Execution', 'One Point of Contact'];
+export interface HeroCms {
+  eyebrow?: string;
+  headlineLine1?: string;
+  headlineLine2?: string;
+  body?: string;
+  trustPoints?: string[];
+  ctaPrimary?: string;
+  ctaSecondary?: string;
+  heroImage?: string;
+}
 
-export default function Hero() {
+const STATIC_TRUST_POINTS = ['Clear Pricing', 'Quality Execution', 'One Point of Contact'];
+
+export default function Hero({ data }: { data?: HeroCms | null }) {
+  const trustPoints = data?.trustPoints?.length ? data.trustPoints : STATIC_TRUST_POINTS;
+  const heroImage = data?.heroImage ?? images.hero;
+  const eyebrow = data?.eyebrow ?? site.tagline;
+  const line1 = data?.headlineLine1 ?? "Let's Build";
+  const line2 = data?.headlineLine2 ?? 'Your Space.';
+  const body = data?.body ?? "From homes and farmhouses to commercial and hospitality spaces, we take care of the construction from start to finish.";
+  const ctaPrimary = data?.ctaPrimary ?? 'Get a Construction Estimate';
+  const ctaSecondary = data?.ctaSecondary ?? 'View Packages';
+
   return (
     <section id="home" className="relative overflow-hidden bg-cream pt-6 sm:pt-10">
       <div className="container-page">
         <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-          {/* Copy - first on mobile and desktop-left */}
           <div className="reveal is-visible">
-            <p className="eyebrow">{site.tagline}</p>
+            <p className="eyebrow">{eyebrow}</p>
             <h1 className="mt-4 font-heading text-[36px] font-extrabold leading-[1.04] sm:text-[48px] lg:text-[56px]">
-              <span className="text-[#2f3a34]">Let’s Build</span>
+              <span className="text-[#2f3a34]">{line1}</span>
               <br />
-              <span className="text-brand">Your Space.</span>
+              <span className="text-brand">{line2}</span>
             </h1>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted sm:text-lg">
-              From homes and farmhouses to commercial and hospitality spaces, we take
-              care of the construction from start to finish.
+              {body}
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <EstimateButton className="w-full sm:w-auto">
-                Get a Construction Estimate
+                {ctaPrimary}
               </EstimateButton>
               <Link href="/#packages" className="btn-secondary w-full sm:w-auto">
-                View Packages
+                {ctaSecondary}
               </Link>
             </div>
 
-            {/* Trust points */}
             <ul className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-7">
               {trustPoints.map((p) => (
                 <li key={p} className="flex items-center gap-2 text-sm font-medium text-ink">
@@ -49,11 +66,10 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Image - after copy on mobile, right on desktop */}
           <div className="reveal is-visible relative">
             <div className="relative aspect-[16/11] w-full overflow-hidden rounded-2xl sm:aspect-[16/9] lg:aspect-[5/5.2]">
               <Image
-                src={images.hero}
+                src={heroImage}
                 alt="Contemporary residential architecture built by Agamana Constructions"
                 fill
                 priority

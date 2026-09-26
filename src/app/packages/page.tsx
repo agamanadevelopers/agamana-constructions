@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import PackageComparison from '@/components/PackageComparison';
+import { sanityFetch } from '@/sanity/lib/client';
+import { packagesQuery } from '@/sanity/lib/queries';
+import { packages as staticPackages, type ConstructionPackage } from '@/data/packages';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Construction Packages',
@@ -22,7 +27,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PackagesPage() {
+export default async function PackagesPage() {
+  const packagesCms = await sanityFetch<ConstructionPackage[]>(packagesQuery);
+  const packages = packagesCms?.length ? packagesCms : staticPackages;
+
   return (
     <PageShell>
       <section className="bg-brand-mist py-12 sm:py-14">
@@ -47,7 +55,7 @@ export default function PackagesPage() {
 
       <section className="bg-cream py-10 sm:py-14">
         <div className="container-page">
-          <PackageComparison />
+          <PackageComparison packages={packages} />
           <p className="mt-8 text-center text-xs text-muted">
             Specifications are indicative and can be tailored. Final inclusions are
             confirmed in your project estimate.

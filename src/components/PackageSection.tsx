@@ -1,10 +1,12 @@
 import Link from 'next/link';
-import { packages } from '@/data/packages';
+import { packages as staticPackages, type ConstructionPackage } from '@/data/packages';
 import { ArrowRight } from './icons';
 import PackageCard from './PackageCard';
 import Reveal from './Reveal';
 
-export default function PackageSection() {
+export default function PackageSection({ packages }: { packages?: ConstructionPackage[] | null }) {
+  const data = packages?.length ? packages : staticPackages;
+
   return (
     <section
       id="packages"
@@ -35,7 +37,7 @@ export default function PackageSection() {
         </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-5 pt-3 md:grid-cols-3 lg:mt-14">
-          {packages.map((pkg, i) => (
+          {data.map((pkg, i) => (
             <Reveal as="div" key={pkg.slug} delay={i * 80} className="flex">
               <PackageCard pkg={pkg} />
             </Reveal>

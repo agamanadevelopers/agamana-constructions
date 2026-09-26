@@ -1,6 +1,12 @@
 import Reveal from './Reveal';
 
-const steps = [
+export interface ProcessStepCms {
+  n: string;
+  title: string;
+  desc: string;
+}
+
+const staticSteps: ProcessStepCms[] = [
   { n: '01', title: 'Discover', desc: 'Understand your requirements, site conditions, expectations and budget.' },
   { n: '02', title: 'Plan', desc: 'Design, engineering approach, scope and project plan.' },
   { n: '03', title: 'Estimate', desc: 'BOQ, specifications, quantities and project costing.' },
@@ -9,7 +15,9 @@ const steps = [
   { n: '06', title: 'Handover', desc: 'Final checks, documentation and handover.' },
 ];
 
-export default function ProcessTimeline() {
+export default function ProcessTimeline({ steps }: { steps?: ProcessStepCms[] | null }) {
+  const data = steps?.length ? steps : staticSteps;
+
   return (
     <section id="process" className="bg-cream py-14 sm:py-[70px]">
       <div className="container-page">
@@ -24,16 +32,15 @@ export default function ProcessTimeline() {
         </Reveal>
 
         <ol className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-y-0">
-          {steps.map((s, i) => (
+          {data.map((s, i) => (
             <Reveal as="li" key={s.n} delay={i * 60} className="relative">
-              {/* Connector line (desktop) */}
-              {i < steps.length - 1 && (
+              {i < data.length - 1 && (
                 <span className="absolute left-[calc(2rem+2px)] top-5 hidden h-px w-[calc(100%-2rem)] bg-brand-green/30 lg:block" />
               )}
               <div className="flex items-start gap-4 lg:flex-col lg:gap-4">
                 <span
                   className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${
-                    i === 0 || i === steps.length - 1 ? 'bg-brand' : 'bg-brand-green'
+                    i === 0 || i === data.length - 1 ? 'bg-brand' : 'bg-brand-green'
                   }`}
                 >
                   {s.n}

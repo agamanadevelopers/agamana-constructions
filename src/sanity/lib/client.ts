@@ -6,3 +6,14 @@ export const client = createClient({
   apiVersion: '2024-01-01',
   useCdn: process.env.NODE_ENV === 'production',
 });
+
+export async function sanityFetch<T>(
+  query: string,
+  params?: Record<string, unknown>
+): Promise<T | null> {
+  try {
+    return await client.fetch<T>(query, params ?? {});
+  } catch {
+    return null;
+  }
+}

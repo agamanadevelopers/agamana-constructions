@@ -5,11 +5,28 @@ import PageShell from '@/components/PageShell';
 import PackageSpecAccordion from '@/components/PackageSpecAccordion';
 import EstimateButton from '@/components/estimate/EstimateButton';
 import { ArrowRight, Check, WhatsApp } from '@/components/icons';
-import { packages, getPackage } from '@/data/packages';
+import { packages as staticPackages, getPackage as getStaticPackage, type ConstructionPackage } from '@/data/packages';
 import { whatsappLink, whatsappMessages } from '@/data/site';
+import { sanityFetch } from '@/sanity/lib/client';
+import { packageBySlugQuery, packageSlugsQuery, packagesQuery } from '@/sanity/lib/queries';
 
-export function generateStaticParams() {
-  return packages.map((p) => ({ slug: p.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const cmsSlugs = await sanityFetch<{ slug: string }[]>(packageSlugsQuery);
+  if (cmsSlugs?.length) return cmsSlugs.map((p) => ({ slug: p.slug }));
+  return staticPackages.map((p) => ({ slug: p.slug }));
+}
+
+async function getPackage(slug: string): Promise<ConstructionPackage | null> {
+  const cmsPkg = await sanityFetch<ConstructionPackage>(packageBySlugQuery, { slug });
+  if (cmsPkg) return cmsPkg;
+  return getStaticPackage(slug) ?? null;
+}
+
+async function getAllPackages(): Promise<ConstructionPackage[]> {
+  const cmsPkgs = await sanityFetch<ConstructionPackage[]>(packagesQuery);
+  return cmsPkgs?.length ? cmsPkgs : staticPackages;
 }
 
 export async function generateMetadata({
@@ -18,7 +35,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const pkg = getPackage(slug);
+  const pkg = await getPackage(slug);
   if (!pkg) return {};
   return {
     title: `${pkg.name} Package · ${pkg.priceLabel}/sq.ft`,
@@ -45,10 +62,10 @@ export default async function PackageDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pkg = getPackage(slug);
+  const [pkg, allPackages] = await Promise.all([getPackage(slug), getAllPackages()]);
   if (!pkg) notFound();
 
-  const others = packages.filter((p) => p.slug !== pkg.slug);
+  const others = allPackages.filter((p) => p.slug !== pkg.slug);
 
   return (
     <PageShell>
@@ -126,7 +143,7 @@ export default async function PackageDetailPage({
               <div>
                 <p className="eyebrow">Full Specifications</p>
                 <h2 className="mt-2 text-2xl font-bold text-brand sm:text-3xl">
-                  What’s included in {pkg.name}
+                  What&apos;s included in {pkg.name}
                 </h2>
               </div>
               <Link

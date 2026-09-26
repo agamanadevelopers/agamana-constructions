@@ -4,30 +4,22 @@ import { site } from '@/data/site';
 import { ArrowRight } from './icons';
 import Reveal from './Reveal';
 
-const ecosystem = [
-  {
-    name: 'Agamana Developers',
-    desc: 'Land Development & Real Estate',
-    image: images.ecoDevelopers,
-  },
-  {
-    name: 'Agamana Constructions',
-    desc: 'Construction & Civil Execution',
-    image: images.ecoConstructions,
-  },
-  {
-    name: 'Agamana Interior World',
-    desc: 'Interior Design & Execution',
-    image: images.ecoInterior,
-  },
-  {
-    name: 'Agamana Projects',
-    desc: 'Project Development & Marketing',
-    image: images.ecoProjects,
-  },
+export interface EcosystemItemCms {
+  name: string;
+  desc: string;
+  image: string;
+}
+
+const staticEcosystem: EcosystemItemCms[] = [
+  { name: 'Agamana Developers', desc: 'Land Development & Real Estate', image: images.ecoDevelopers },
+  { name: 'Agamana Constructions', desc: 'Construction & Civil Execution', image: images.ecoConstructions },
+  { name: 'Agamana Interior World', desc: 'Interior Design & Execution', image: images.ecoInterior },
+  { name: 'Agamana Projects', desc: 'Project Development & Marketing', image: images.ecoProjects },
 ];
 
-export default function GroupEcosystem() {
+export default function GroupEcosystem({ ecosystem }: { ecosystem?: EcosystemItemCms[] | null }) {
+  const data = ecosystem?.length ? ecosystem : staticEcosystem;
+
   return (
     <section id="about" className="bg-cream py-14 sm:py-[70px]">
       <div className="container-page">
@@ -67,7 +59,7 @@ export default function GroupEcosystem() {
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {ecosystem.map((e, i) => (
+          {data.map((e, i) => (
             <Reveal as="div" key={e.name} delay={i * 60}>
               <article className="card card-hover group h-full p-2.5">
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl">

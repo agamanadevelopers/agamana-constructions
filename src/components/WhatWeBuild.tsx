@@ -4,35 +4,24 @@ import { images } from '@/data/images';
 import { ArrowRight } from './icons';
 import Reveal from './Reveal';
 
-const categories = [
-  {
-    title: 'Residential',
-    items: ['Individual Homes', 'Villas', 'Farmhouses', 'Luxury Residences', 'Renovations'],
-    image: images.buildResidential,
-  },
-  {
-    title: 'Commercial',
-    items: ['Office Spaces', 'Retail Buildings', 'Commercial Developments'],
-    image: images.buildCommercial,
-  },
-  {
-    title: 'Hospitality',
-    items: ['Resorts', 'Farm Stays', 'Guest Facilities', 'Community Spaces'],
-    image: images.buildHospitality,
-  },
-  {
-    title: 'Institutional',
-    items: ['Educational', 'Corporate Facilities', 'Community & Institutional Buildings'],
-    image: images.buildInstitutional,
-  },
-  {
-    title: 'Civil & Site Development',
-    items: ['Roads & Pathways', 'Drainage', 'Compound Walls', 'Earthwork', 'External Development'],
-    image: images.buildCivil,
-  },
+export interface WhatWeBuildCategoryCms {
+  title: string;
+  items: string[];
+  image: string;
+  imageAlt?: string;
+}
+
+const staticCategories: WhatWeBuildCategoryCms[] = [
+  { title: 'Residential', items: ['Individual Homes', 'Villas', 'Farmhouses', 'Luxury Residences', 'Renovations'], image: images.buildResidential },
+  { title: 'Commercial', items: ['Office Spaces', 'Retail Buildings', 'Commercial Developments'], image: images.buildCommercial },
+  { title: 'Hospitality', items: ['Resorts', 'Farm Stays', 'Guest Facilities', 'Community Spaces'], image: images.buildHospitality },
+  { title: 'Institutional', items: ['Educational', 'Corporate Facilities', 'Community & Institutional Buildings'], image: images.buildInstitutional },
+  { title: 'Civil & Site Development', items: ['Roads & Pathways', 'Drainage', 'Compound Walls', 'Earthwork', 'External Development'], image: images.buildCivil },
 ];
 
-export default function WhatWeBuild() {
+export default function WhatWeBuild({ categories }: { categories?: WhatWeBuildCategoryCms[] | null }) {
+  const data = categories?.length ? categories : staticCategories;
+
   return (
     <section id="what-we-build" className="bg-brand-mist py-14 sm:py-[70px]">
       <div className="container-page">
@@ -50,13 +39,13 @@ export default function WhatWeBuild() {
         </Reveal>
 
         <div className="grid grid-cols-1 gap-3 lg:grid-cols-5 lg:gap-4">
-          {categories.map((c, i) => (
+          {data.map((c, i) => (
             <Reveal as="div" key={c.title} delay={i * 50}>
               <article className="card card-hover group flex h-full flex-row items-center gap-4 p-2.5 lg:flex-col lg:items-stretch lg:gap-0">
                 <div className="relative h-[72px] w-[104px] shrink-0 overflow-hidden rounded-xl lg:aspect-[16/10] lg:h-auto lg:w-full">
                   <Image
                     src={c.image}
-                    alt={c.title}
+                    alt={c.imageAlt ?? c.title}
                     fill
                     sizes="(max-width: 1024px) 110px, 250px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

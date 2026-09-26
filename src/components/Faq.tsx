@@ -1,16 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { faqs } from '@/data/faq';
+import { faqs as staticFaqs } from '@/data/faq';
 import { Plus, Minus } from './icons';
 import Reveal from './Reveal';
 
-export default function Faq() {
+export interface FaqItemCms {
+  question: string;
+  answer: string;
+}
+
+export default function Faq({ faqs }: { faqs?: FaqItemCms[] | null }) {
+  const data = faqs?.length ? faqs : staticFaqs;
   const [open, setOpen] = useState<number | null>(0);
 
-  // Two-column split for desktop
-  const mid = Math.ceil(faqs.length / 2);
-  const columns = [faqs.slice(0, mid), faqs.slice(mid)];
+  const mid = Math.ceil(data.length / 2);
+  const columns = [data.slice(0, mid), data.slice(mid)];
 
   let globalIndex = -1;
 

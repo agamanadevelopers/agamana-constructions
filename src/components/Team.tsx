@@ -1,8 +1,20 @@
 import Image from 'next/image';
-import { team } from '@/data/team';
+import { team as staticTeam } from '@/data/team';
 import Reveal from './Reveal';
 
-export default function Team() {
+export interface TeamMemberCms {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  emphasis?: boolean;
+}
+
+export default function Team({ members }: { members?: TeamMemberCms[] | null }) {
+  const data = members?.length
+    ? members
+    : staticTeam.map((m) => ({ name: m.name, role: m.role, bio: m.bio, image: m.image, emphasis: m.emphasis }));
+
   return (
     <section id="team" className="bg-cream py-14 sm:py-[70px]">
       <div className="container-page">
@@ -16,7 +28,7 @@ export default function Team() {
         </Reveal>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {team.map((m, i) => (
+          {data.map((m, i) => (
             <Reveal as="div" key={m.name} delay={i * 70} className="flex">
               <article className="card flex h-full flex-col p-2.5">
                 <div className="relative aspect-[16/11] w-full overflow-hidden rounded-xl">

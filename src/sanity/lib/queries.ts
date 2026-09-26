@@ -1,5 +1,18 @@
 import { groq } from 'next-sanity';
 
+const CATEGORY_LABEL = `select(
+  key == "design" => "Design & Drawings",
+  key == "structure" => "Structure",
+  key == "kitchen" => "Kitchen",
+  key == "bathrooms" => "Bathrooms",
+  key == "doorsWindows" => "Doors & Windows",
+  key == "flooring" => "Flooring",
+  key == "painting" => "Painting",
+  key == "electrical" => "Electrical Work",
+  key == "plumbing" => "Plumbing",
+  key == "miscellaneous" => "Miscellaneous"
+)`;
+
 export const siteConfigQuery = groq`*[_type == "siteConfig"][0]`;
 
 export const heroQuery = groq`*[_type == "hero"][0]`;
@@ -7,14 +20,16 @@ export const heroQuery = groq`*[_type == "hero"][0]`;
 export const packagesQuery = groq`*[_type == "package"] | order(order asc) {
   "slug": slug.current,
   name, price, priceLabel, tagline, description, featured, highlights,
-  categories[] { key, items }
+  categories[] { key, "label": ${CATEGORY_LABEL}, items }
 }`;
 
 export const packageBySlugQuery = groq`*[_type == "package" && slug.current == $slug][0] {
   "slug": slug.current,
   name, price, priceLabel, tagline, description, featured, highlights,
-  categories[] { key, items }
+  categories[] { key, "label": ${CATEGORY_LABEL}, items }
 }`;
+
+export const packageSlugsQuery = groq`*[_type == "package"]{ "slug": slug.current }`;
 
 export const teamQuery = groq`*[_type == "teamMember"] | order(order asc) {
   name, role, bio, emphasis,
