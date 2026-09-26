@@ -49,6 +49,7 @@ export default function EstimateModal() {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>(emptyForm);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -105,14 +106,26 @@ export default function EstimateModal() {
       .filter(Boolean)
       .join('\n');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim()) {
       setError('Please share your name and phone number so we can reach you.');
       return;
     }
     setError('');
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      await fetch('/api/estimate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+    } catch {
+      // silently continue — WhatsApp fallback is still available
+    } finally {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -233,9 +246,9 @@ export default function EstimateModal() {
                       {error}
                     </p>
                   )}
-                  <button type="submit" className="btn-primary group w-full">
-                    Get My Estimate
-                    <ArrowRight className="btn-arrow" width={18} height={18} />
+                  <button type="submit" disabled={submitting} className="btn-primary group w-full disabled:opacity-60">
+                    {submitting ? 'Sending…' : 'Get My Estimate'}
+                    {!submitting && <ArrowRight className="btn-arrow" width={18} height={18} />}
                   </button>
                 </form>
               )}
