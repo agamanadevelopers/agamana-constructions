@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="border-t border-black/[0.07] bg-cream">
       <div className="container-page pb-24 pt-10 md:pb-10">
         {/* Main row */}
-        <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col items-start gap-6 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">
             <Link href="/#home" aria-label="Agamana Constructions home">
               <Wordmark />
@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <nav className="grid grid-cols-2 gap-x-8 gap-y-3 justify-items-center md:flex md:flex-wrap md:items-center md:gap-x-6 md:gap-y-2 md:justify-center" aria-label="Footer">
+          <nav className="grid grid-cols-2 gap-x-8 gap-y-3 md:flex md:flex-wrap md:items-center md:gap-x-6 md:gap-y-2 md:justify-center" aria-label="Footer">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
@@ -34,7 +34,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <p className="text-center text-sm font-medium text-muted md:text-right">{site.locations.join(' • ')}</p>
+          <p className="text-sm font-medium text-muted md:text-right">{site.locations.join(' • ')}</p>
         </div>
 
         {/* Divider */}
