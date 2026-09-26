@@ -27,7 +27,9 @@ export default function ProcessTimeline({
   section?: ProcessTimelineSectionCms | null;
   steps?: ProcessStepCms[] | null;
 }) {
-  const data = steps?.length ? steps : staticSteps;
+  const data = steps?.length
+    ? steps.map((s, i) => ({ ...s, desc: s.desc || staticSteps[i]?.desc || '' }))
+    : staticSteps;
   const sectionTitle = section?.sectionTitle ?? 'From Your First Conversation to Handover';
   const sectionSubtitle = section?.sectionSubtitle ?? 'A structured approach to make your construction journey smoother and more predictable.';
 
@@ -53,7 +55,7 @@ export default function ProcessTimeline({
                 >
                   {s.n}
                 </span>
-                <div>
+                <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-semibold text-brand">{s.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted lg:pr-3">{s.desc}</p>
                 </div>
