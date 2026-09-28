@@ -76,7 +76,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               </Link>
             </div>
 
-            <ul className="mt-5 flex flex-row flex-wrap justify-center gap-x-5 gap-y-2 sm:justify-start sm:gap-x-7">
+            <ul className="mt-5 flex flex-row flex-wrap gap-x-5 gap-y-2 sm:gap-x-7">
               {trustPoints.map((p) => (
                 <li key={p} className="flex items-center gap-2 text-sm font-medium text-ink">
                   <CircleCheck className="text-brand-green" width={18} height={18} />
@@ -85,7 +85,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               ))}
             </ul>
 
-            <p className="mt-4 text-center text-sm font-medium text-muted sm:text-left">
+            <p className="mt-4 text-sm font-medium text-muted">
               {site.locations.join(' • ')}
             </p>
           </div>
