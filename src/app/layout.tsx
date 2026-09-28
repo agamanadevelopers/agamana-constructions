@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: 'Agamana Constructions | House Construction in Bengaluru, Shimoga & Sagara',
+    default: 'Agamana Constructions | Construction Company in Bengaluru | Shimoga | Sagara',
     template: '%s · Agamana Constructions',
   },
   description:
