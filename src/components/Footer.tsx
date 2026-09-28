@@ -72,6 +72,21 @@ export default function Footer() {
           </p>
         </div>
 
+        {/* Legal links */}
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+          <Link href="/privacy-policy" className="text-xs text-muted/70 transition-colors hover:text-brand">
+            Privacy Policy
+          </Link>
+          <span className="text-xs text-muted/30" aria-hidden="true">·</span>
+          <Link href="/terms" className="text-xs text-muted/70 transition-colors hover:text-brand">
+            Terms &amp; Conditions
+          </Link>
+          <span className="text-xs text-muted/30" aria-hidden="true">·</span>
+          <Link href="/risk-disclaimer" className="text-xs text-muted/70 transition-colors hover:text-brand">
+            Risk Disclaimer
+          </Link>
+        </div>
+
         {/* Credit badge */}
         <div className="mt-7 flex justify-center">
           <a
