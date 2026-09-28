@@ -29,14 +29,18 @@ export default function PackageSection({
       id="packages"
       className="relative overflow-hidden bg-brand py-16 text-white sm:py-24"
       style={{
-        backgroundImage:
-          'radial-gradient(120% 80% at 30% 0%, rgba(81,186,124,0.28) 0%, rgba(1,71,58,0) 55%)',
+        backgroundImage: [
+          'radial-gradient(120% 80% at 30% 0%, rgba(81,186,124,0.22) 0%, rgba(1,71,58,0) 55%)',
+          'radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px)',
+        ].join(', '),
+        backgroundSize: 'auto, 28px 28px',
       }}
     >
       <div className="container-page relative">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold sm:text-[42px]">{sectionTitle}</h2>
+            <p className="eyebrow text-brand-greenSoft">Construction Packages</p>
+            <h2 className="mt-3 text-3xl font-bold sm:text-[42px]">{sectionTitle}</h2>
             <p className="mt-3 text-white/70 sm:text-lg">{sectionSubtitle}</p>
           </div>
           <Link
