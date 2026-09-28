@@ -67,11 +67,11 @@ export default function WhatWeBuild({
                   />
                 </div>
 
-                {/* Gradient overlay — deepens on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
+                {/* Gradient overlay — strong enough to cover all items text */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/5" />
 
                 {/* Number badge */}
-                <div className="absolute left-3.5 top-3.5 flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/20 backdrop-blur-sm">
+                <div className="absolute left-3.5 top-3.5 flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/25 backdrop-blur-sm">
                   <span className="text-[10px] font-bold leading-none text-white/70">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -80,9 +80,10 @@ export default function WhatWeBuild({
                 {/* Content overlaid on gradient */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
                   <h3 className="text-[15px] font-semibold leading-snug text-white lg:text-base">{c.title}</h3>
-                  <ul className="mt-2.5 space-y-1.5">
+                  {/* Items hidden on mobile — only shown on desktop where card is tall enough */}
+                  <ul className="mt-2.5 hidden space-y-1.5 lg:block">
                     {c.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-[11px] text-white/75 lg:text-[13px]">
+                      <li key={item} className="flex items-center gap-2 text-[13px] text-white/80">
                         <span className="h-1 w-1 shrink-0 rounded-full bg-brand-green" />
                         {item}
                       </li>
