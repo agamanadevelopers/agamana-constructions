@@ -49,14 +49,14 @@ export const metadata: Metadata = {
     type: 'website',
     url: site.url,
     siteName: site.brand,
-    title: "Agamana Constructions | Let's Build Your Space.",
+    title: 'Agamana Constructions | Construction Company in Bengaluru | Shimoga | Sagara',
     description:
       'Construction for homes, villas, farmhouses, commercial and hospitality spaces across Bengaluru, Shimoga and Sagara.',
     images: [{ url: '/og-home.webp', width: 1734, height: 907, alt: 'Agamana Constructions' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Agamana Constructions | Let's Build Your Space.",
+    title: 'Agamana Constructions | Construction Company in Bengaluru | Shimoga | Sagara',
     description:
       'Construction for homes, villas, farmhouses, commercial and hospitality spaces across Bengaluru, Shimoga and Sagara.',
     images: ['/og-home.webp'],
