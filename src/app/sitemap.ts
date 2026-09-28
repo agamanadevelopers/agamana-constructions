@@ -13,6 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === '' ? 1 : 0.8,
   }));
 
+  const legalRoutes = ['/privacy-policy', '/terms', '/risk-disclaimer'].map((path) => ({
+    url: `${base}${path}`,
+    lastModified: now,
+    changeFrequency: 'yearly' as const,
+    priority: 0.3,
+  }));
+
   const packageRoutes = packages.map((p) => ({
     url: `${base}/packages/${p.slug}`,
     lastModified: now,
@@ -20,5 +27,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...packageRoutes];
+  return [...staticRoutes, ...packageRoutes, ...legalRoutes];
 }
