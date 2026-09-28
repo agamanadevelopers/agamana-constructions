@@ -45,11 +45,29 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               <br />
               <span className="text-brand">{line2}</span>
             </h1>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-muted sm:text-lg">
+
+            {/* Mobile-only image strip — gives visual context above the fold */}
+            <div className="relative mt-4 aspect-[21/9] w-full overflow-hidden rounded-xl lg:hidden">
+              <Image
+                src={heroImage}
+                alt={heroImageAlt}
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+              <div className="absolute bottom-0 right-0 rounded-tl-xl bg-brand/90 px-3 py-2 backdrop-blur-sm">
+                <p className="font-heading text-[13px] font-semibold leading-snug text-white">
+                  {badgeText}
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-4 max-w-md text-base leading-relaxed text-muted sm:mt-5 sm:text-lg">
               {body}
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <EstimateButton className="w-full sm:w-auto">
                 {ctaPrimary}
               </EstimateButton>
@@ -58,7 +76,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               </Link>
             </div>
 
-            <ul className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-7">
+            <ul className="mt-5 flex flex-row flex-wrap gap-x-5 gap-y-2 sm:gap-x-7">
               {trustPoints.map((p) => (
                 <li key={p} className="flex items-center gap-2 text-sm font-medium text-ink">
                   <CircleCheck className="text-brand-green" width={18} height={18} />
@@ -67,7 +85,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
               ))}
             </ul>
 
-            <p className="mt-6 text-sm font-medium text-muted">
+            <p className="mt-4 text-sm font-medium text-muted">
               {site.locations.join(' • ')}
             </p>
           </div>
