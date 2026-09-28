@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageShell from '@/components/PageShell';
 import PackageSpecAccordion from '@/components/PackageSpecAccordion';
+import PackagesPdfDownload from '@/components/PackagesPdfDownload';
 import EstimateButton from '@/components/estimate/EstimateButton';
 import { ArrowRight, Check, WhatsApp } from '@/components/icons';
 import { packages as staticPackages, getPackage as getStaticPackage, type ConstructionPackage } from '@/data/packages';
@@ -157,10 +158,16 @@ export default async function PackageDetailPage({
 
             <PackageSpecAccordion categories={pkg.categories} />
 
-            <p className="mt-6 rounded-xl border border-black/[0.06] bg-white px-4 py-3 text-xs leading-relaxed text-muted">
-              Specifications are indicative and can be tailored to your requirements.
-              Final inclusions are confirmed in your project estimate and agreement.
-            </p>
+            {/* Download PDF */}
+            <div className="mt-8 flex justify-center">
+              <PackagesPdfDownload packages={allPackages} />
+            </div>
+
+            <div className="mt-6 rounded-xl border border-black/[0.07] bg-brand-mist px-5 py-4 sm:px-6">
+              <p className="text-[13px] leading-relaxed text-muted">
+                <span className="font-semibold text-ink">Disclaimer:</span> The above package prices are applicable for projects with a minimum built-up area of 3,000 sq.ft. The final project estimate may vary depending on the project requirements, site location, site conditions, specifications, scope of work, and prevailing material prices at the time of construction. Final pricing will be confirmed based on the project-specific requirements and detailed estimation.
+              </p>
+            </div>
           </div>
         </div>
       </section>
