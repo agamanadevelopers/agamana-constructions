@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import PageShell from '@/components/PageShell';
 import { site } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy – Agamana Constructions',
+  title: 'Privacy Policy',
   description: 'How Agamana Constructions collects, uses, and protects your personal information.',
 };
 
@@ -11,7 +12,8 @@ const EFFECTIVE_DATE = 'September 2025';
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="bg-cream min-h-screen py-16 sm:py-24">
+    <PageShell>
+    <main className="bg-cream py-16 sm:py-24">
       <div className="container-page max-w-3xl">
         <p className="eyebrow">Legal</p>
         <h1 className="mt-3 text-3xl font-bold text-brand sm:text-[42px]">Privacy Policy</h1>
@@ -183,9 +185,9 @@ export default function PrivacyPolicyPage() {
         <div className="mt-12 flex flex-wrap gap-4 text-sm">
           <Link href="/terms" className="text-brand hover:underline">Terms &amp; Conditions</Link>
           <Link href="/risk-disclaimer" className="text-brand hover:underline">Risk Disclaimer</Link>
-          <Link href="/" className="text-muted hover:text-brand">← Back to Home</Link>
         </div>
       </div>
     </main>
+    </PageShell>
   );
 }

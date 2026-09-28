@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import PageShell from '@/components/PageShell';
 import { site } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions – Agamana Constructions',
+  title: 'Terms & Conditions',
   description: 'Terms and conditions governing your use of the Agamana Constructions website.',
 };
 
@@ -11,7 +12,8 @@ const EFFECTIVE_DATE = 'September 2025';
 
 export default function TermsPage() {
   return (
-    <main className="bg-cream min-h-screen py-16 sm:py-24">
+    <PageShell>
+    <main className="bg-cream py-16 sm:py-24">
       <div className="container-page max-w-3xl">
         <p className="eyebrow">Legal</p>
         <h1 className="mt-3 text-3xl font-bold text-brand sm:text-[42px]">Terms &amp; Conditions</h1>
@@ -169,9 +171,9 @@ export default function TermsPage() {
         <div className="mt-12 flex flex-wrap gap-4 text-sm">
           <Link href="/privacy-policy" className="text-brand hover:underline">Privacy Policy</Link>
           <Link href="/risk-disclaimer" className="text-brand hover:underline">Risk Disclaimer</Link>
-          <Link href="/" className="text-muted hover:text-brand">← Back to Home</Link>
         </div>
       </div>
     </main>
+    </PageShell>
   );
 }
