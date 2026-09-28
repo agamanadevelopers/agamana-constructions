@@ -26,8 +26,8 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
   const heroImage = data?.heroImage ?? images.hero;
   const heroImageAlt = data?.heroImageAlt ?? 'Contemporary residential architecture built by Agamana Constructions';
   const eyebrow = data?.eyebrow ?? site.tagline;
-  const line1 = data?.headlineLine1 ?? "Let's Build";
-  const line2 = data?.headlineLine2 ?? 'Your Space.';
+  const line1 = data?.headlineLine1 ?? 'Build What';
+  const line2 = data?.headlineLine2 ?? 'Matters Most.';
   const body = data?.body ?? "From homes and farmhouses to commercial and hospitality spaces, we take care of the construction from start to finish.";
   const ctaPrimary = data?.ctaPrimary ?? 'Get a Construction Estimate';
   const ctaSecondary = data?.ctaSecondary ?? 'View Packages';
@@ -90,7 +90,7 @@ export default function Hero({ data }: { data?: HeroCms | null }) {
             </p>
           </div>
 
-          <div className="reveal is-visible relative">
+          <div className="reveal is-visible relative hidden lg:block">
             <div className="relative aspect-[16/11] w-full overflow-hidden rounded-2xl sm:aspect-[16/9] lg:aspect-[5/5.2]">
               <Image
                 src={heroImage}
