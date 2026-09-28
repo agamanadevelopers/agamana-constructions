@@ -52,39 +52,32 @@ export default function WhatWeBuild({
           </Link>
         </Reveal>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {data.map((c, i) => (
             <Reveal as="div" key={c.title} delay={i * 60} className="h-full">
-              <article className="group relative overflow-hidden rounded-2xl h-full cursor-default">
-                {/* Full-bleed image */}
-                <div className="relative aspect-[3/4] w-full lg:aspect-auto lg:h-[300px]">
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                {/* Image */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[4/3]">
                   <Image
                     src={c.image}
                     alt={c.imageAlt ?? c.title}
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 260px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 260px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                </div>
-
-                {/* Gradient overlay — strong enough to cover all items text */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/5" />
-
-                {/* Number badge */}
-                <div className="absolute left-3.5 top-3.5 flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/25 backdrop-blur-sm">
-                  <span className="text-[10px] font-bold leading-none text-white/70">
+                  {/* Category number badge */}
+                  <span className="absolute left-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
 
-                {/* Content overlaid on gradient */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
-                  <h3 className="text-[15px] font-semibold leading-snug text-white lg:text-base">{c.title}</h3>
-                  {/* Items hidden on mobile — only shown on desktop where card is tall enough */}
-                  <ul className="mt-2.5 hidden space-y-1.5 lg:block">
+                {/* Text content — always visible */}
+                <div className="flex flex-1 flex-col p-4 lg:p-4">
+                  <h3 className="text-[15px] font-semibold leading-snug text-brand">{c.title}</h3>
+                  <ul className="mt-3 space-y-1.5">
                     {c.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-[13px] text-white/80">
-                        <span className="h-1 w-1 shrink-0 rounded-full bg-brand-green" />
+                      <li key={item} className="flex items-start gap-2 text-[13px] leading-snug text-muted">
+                        <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green" />
                         {item}
                       </li>
                     ))}
