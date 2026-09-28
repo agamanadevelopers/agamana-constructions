@@ -15,6 +15,11 @@ export default function TermsPage() {
     <PageShell>
     <main className="bg-cream py-16 sm:py-24">
       <div className="container-page max-w-3xl">
+        <nav className="mb-6 text-sm text-muted" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-brand">Home</Link>
+          <span className="mx-2">/</span>
+          <span className="text-brand">Terms &amp; Conditions</span>
+        </nav>
         <p className="eyebrow">Legal</p>
         <h1 className="mt-3 text-3xl font-bold text-brand sm:text-[42px]">Terms &amp; Conditions</h1>
         <p className="mt-3 text-sm text-muted">Effective date: {EFFECTIVE_DATE}</p>
