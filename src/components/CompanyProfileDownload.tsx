@@ -24,12 +24,10 @@ export default function CompanyProfileDownload() {
               <div className="max-w-xl">
                 <p className="eyebrow">Company Profile</p>
                 <h2 className="mt-3 text-2xl font-bold text-brand sm:text-[32px] sm:leading-[1.2]">
-                  Get to Know Agamana Constructions
+                  Our Company Profile
                 </h2>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted">
-                  Our company profile covers who we are, what we build, how we work, and the
-                  specifications across all three construction packages — everything you need
-                  to share with your family or advisor before making a decision.
+                  Download our profile to learn about our services, construction packages, and how we work. Good to share with family or a co-decision maker before getting in touch.
                 </p>
 
               </div>
