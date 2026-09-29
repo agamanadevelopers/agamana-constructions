@@ -8,6 +8,7 @@ import PackageSection from '@/components/PackageSection';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import ProjectVisibility from '@/components/ProjectVisibility';
 import Team from '@/components/Team';
+import CompanyProfileDownload from '@/components/CompanyProfileDownload';
 import Faq from '@/components/Faq';
 import FinalCta from '@/components/FinalCta';
 import Footer from '@/components/Footer';
@@ -142,6 +143,7 @@ export default async function HomePage() {
           section={teamSectionCms as Parameters<typeof Team>[0]['section']}
           members={teamCms as Parameters<typeof Team>[0]['members']}
         />
+        <CompanyProfileDownload />
         <Faq
           section={faqSectionCms as Parameters<typeof Faq>[0]['section']}
           faqs={faqsCms as Parameters<typeof Faq>[0]['faqs']}
