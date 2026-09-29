@@ -2,12 +2,6 @@ import Reveal from './Reveal';
 
 const PROFILE_PDF = '/agamana-company-profile.pdf';
 
-const STATS = [
-  { value: '500+', label: 'Projects Delivered' },
-  { value: '15+', label: 'Years of Experience' },
-  { value: '3', label: 'Cities Served' },
-];
-
 export default function CompanyProfileDownload() {
   return (
     <section className="bg-brand-mist py-14 sm:py-[70px]">
@@ -38,17 +32,6 @@ export default function CompanyProfileDownload() {
                   to share with your family or advisor before making a decision.
                 </p>
 
-                {/* Stats row */}
-                <div className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
-                  {STATS.map((s) => (
-                    <div key={s.label}>
-                      <p className="font-heading text-2xl font-extrabold text-brand">{s.value}</p>
-                      <p className="mt-0.5 text-[12px] font-medium uppercase tracking-wide text-muted">
-                        {s.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
               </div>
 
               {/* Right — download card */}
